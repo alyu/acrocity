@@ -1,0 +1,444 @@
+<meta charset="utf-8">
+<title>Alexander Yu</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+  :root {
+    --ground: #F5F6F8;
+    --surface: #FFFFFF;
+    --ink: #1B2430;
+    --muted: #5B6674;
+    --accent: #2E5077;
+    --accent-soft: #E7EDF4;
+    --hairline: #DCE1E8;
+    --ph-bg: #FBF3E2;
+    --ph-line: #C9A85C;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #12161C;
+      --surface: #1A2129;
+      --ink: #E9EDF2;
+      --muted: #9BA6B3;
+      --accent: #85ACD6;
+      --accent-soft: #223142;
+      --hairline: #2B333E;
+      --ph-bg: #33301F;
+      --ph-line: #A3894D;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #12161C;
+    --surface: #1A2129;
+    --ink: #E9EDF2;
+    --muted: #9BA6B3;
+    --accent: #85ACD6;
+    --accent-soft: #223142;
+    --hairline: #2B333E;
+    --ph-bg: #33301F;
+    --ph-line: #A3894D;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.9;
+    margin: 0;
+  }
+  .page {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+  }
+
+  /* ---- language visibility ---- */
+  [data-lang="en"] { display: none; }
+  :root[data-page-lang="en"] [data-lang="en"] { display: revert; }
+  :root[data-page-lang="en"] [data-lang="ja"] { display: none; }
+
+  /* ---- header ---- */
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .brand .logo {
+    width: 38px;
+    height: 38px;
+    color: var(--accent);
+    flex: none;
+  }
+  .brand .eyebrow { margin: 0; }
+  header.site {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+  }
+  .lang-switch {
+    display: inline-flex;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--surface);
+    flex: none;
+  }
+  .lang-switch button {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.95rem;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .lang-switch button[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--surface);
+  }
+  .lang-switch button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+
+  /* ---- hero ---- */
+  .hero {
+    display: flex;
+    gap: 1.5rem;
+    align-items: stretch;
+    margin-bottom: 3.5rem;
+  }
+  .tate {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--accent);
+    border-left: 2px solid var(--accent);
+    padding-left: 0.75rem;
+    flex: none;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 2.1rem;
+    line-height: 1.4;
+    margin: 0 0 0.5rem;
+    text-wrap: balance;
+  }
+  .hero .role {
+    color: var(--muted);
+    font-size: 1rem;
+    margin: 0 0 1.25rem;
+  }
+  .hero .lede { margin: 0; max-width: 38rem; }
+
+  /* ---- sections ---- */
+  section { margin-bottom: 3.25rem; }
+  .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.4rem;
+  }
+  section h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.45rem;
+    line-height: 1.5;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--hairline);
+    text-wrap: balance;
+  }
+  section p { margin: 0 0 1rem; max-width: 40rem; }
+
+  /* ---- overview table ---- */
+  .overview {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    font-size: 0.95rem;
+  }
+  .overview th, .overview td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.8rem 1.1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .overview tr:last-child th, .overview tr:last-child td { border-bottom: none; }
+  .overview th {
+    width: 32%;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--accent-soft);
+    white-space: nowrap;
+  }
+  .table-wrap { overflow-x: auto; }
+
+  /* ---- services ---- */
+  .services {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .services li {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    padding: 1.1rem 1.3rem;
+  }
+  .services .svc-title {
+    display: block;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+  }
+  .services .svc-desc {
+    color: var(--muted);
+    font-size: 0.93rem;
+    line-height: 1.8;
+  }
+
+  /* ---- placeholders ---- */
+  .ph {
+    background: var(--ph-bg);
+    border-bottom: 2px dashed var(--ph-line);
+    padding: 0 0.3em;
+    border-radius: 2px;
+  }
+
+  /* ---- contact & footer ---- */
+  .contact-line { font-size: 1.05rem; }
+  .contact-line a { color: var(--accent); }
+  footer.site {
+    margin-top: 4rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--hairline);
+    color: var(--muted);
+    font-size: 0.83rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 560px) {
+    .hero { gap: 1rem; }
+    .tate { display: none; }
+    .hero h1 { font-size: 1.7rem; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .lang-switch button { transition: background 0.15s ease, color 0.15s ease; }
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ume" viewBox="0 0 100 100">
+    <!-- ume seal mark: plum blossom reversed out of a hanko-style seal -->
+    <rect x="10" y="10" width="80" height="80" rx="16" fill="currentColor"/>
+    <g fill="var(--ground)">
+      <circle cx="50" cy="31.5" r="16.5"/>
+      <circle cx="67.6" cy="44.3" r="16.5"/>
+      <circle cx="60.9" cy="65" r="16.5"/>
+      <circle cx="39.1" cy="65" r="16.5"/>
+      <circle cx="32.4" cy="44.3" r="16.5"/>
+    </g>
+    <g stroke="currentColor" stroke-width="2.8" stroke-linecap="round">
+      <line x1="50" y1="50" x2="69.4" y2="23.3"/>
+      <line x1="50" y1="50" x2="81.4" y2="60.2"/>
+      <line x1="50" y1="50" x2="50" y2="83"/>
+      <line x1="50" y1="50" x2="18.6" y2="60.2"/>
+      <line x1="50" y1="50" x2="30.6" y2="23.3"/>
+    </g>
+    <circle cx="50" cy="50" r="7.5" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<div class="page">
+
+  <header class="site">
+    <div class="brand">
+      <svg class="logo" aria-hidden="true"><use href="#ume"/></svg>
+      <div>
+        <p class="eyebrow" data-lang="ja">個人事業・事業紹介</p>
+        <p class="eyebrow" data-lang="en">Sole Proprietorship · Business Profile</p>
+      </div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language / 言語">
+      <button type="button" id="btn-ja" aria-pressed="true">日本語</button>
+      <button type="button" id="btn-en" aria-pressed="false">English</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="tate" aria-hidden="true"><span>個</span><span>人</span><span>事</span><span>業</span></div>
+    <div>
+      <div data-lang="ja">
+        <h1>Alexander Yu</h1>
+        <p class="role">プロダクト戦略コンサルタント（個人事業主）</p>
+        <p class="lede">ソフトウェア企業向けに、プロダクト戦略の立案とプロダクトマネジメントの実務を業務委託で提供する個人事業です。戦略策定から開発チームの推進まで、プロダクト部門責任者クラスの実務を一貫して担います。</p>
+      </div>
+      <div data-lang="en">
+        <h1>Alexander Yu</h1>
+        <p class="role">Product Strategy Consultant (Sole Proprietor)</p>
+        <p class="lede">An independent consultancy providing product strategy and hands-on product management to software companies under contract, providing senior product leadership from strategy definition through day-to-day delivery with engineering teams.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="overview">
+    <div data-lang="ja">
+      <p class="eyebrow">Overview</p>
+      <h2>事業概要</h2>
+      <div class="table-wrap">
+        <table class="overview">
+          <tbody>
+            <tr><th>事業形態</th><td>個人事業（個人事業主）</td></tr>
+            <tr><th>屋号</th><td>なし（個人名にて事業を行っています）</td></tr>
+            <tr><th>代表者</th><td>Alexander Yu</td></tr>
+            <tr><th>所在地</th><td>東京都荒川区（詳細住所は、お取引にあたり個別にお知らせいたします）</td></tr>
+            <tr><th>開業</th><td>2013年6月（開業届 提出済み）</td></tr>
+            <tr><th>事業内容</th><td>ソフトウェアプロダクトの戦略立案、プロダクトマネジメントおよび開発推進に関するコンサルティング業務</td></tr>
+            <tr><th>取引地域</th><td>主に海外（欧州ほか）</td></tr>
+            <tr><th>連絡先</th><td><a href="mailto:alex@acrocity.io">alex@acrocity.io</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div data-lang="en">
+      <p class="eyebrow">Overview</p>
+      <h2>Business Overview</h2>
+      <div class="table-wrap">
+        <table class="overview">
+          <tbody>
+            <tr><th>Business type</th><td>Sole proprietorship (kojin jigyō)</td></tr>
+            <tr><th>Trade name</th><td>None (the business operates under my personal name)</td></tr>
+            <tr><th>Proprietor</th><td>Alexander Yu</td></tr>
+            <tr><th>Location</th><td>Arakawa-ku, Tokyo, Japan (full address provided directly to clients and financial institutions)</td></tr>
+            <tr><th>Established</th><td>June 2013 (notification of business opening filed)</td></tr>
+            <tr><th>Business activities</th><td>Consulting services in software product strategy, product management, and engineering delivery</td></tr>
+            <tr><th>Markets</th><td>Primarily overseas (Europe and elsewhere)</td></tr>
+            <tr><th>Contact</th><td><a href="mailto:alex@acrocity.io">alex@acrocity.io</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div data-lang="ja">
+      <p class="eyebrow">Services</p>
+      <h2>サービス内容</h2>
+      <ul class="services">
+        <li>
+          <span class="svc-title">プロダクト戦略・ロードマップ策定</span>
+          <span class="svc-desc">市場動向と顧客ニーズを踏まえたプロダクト戦略の立案、ロードマップの策定・運用、機能の優先順位付け。</span>
+        </li>
+        <li>
+          <span class="svc-title">プロダクトマネジメント業務の受託</span>
+          <span class="svc-desc">プロダクト部門責任者としての業務受託。プロダクトの企画から提供までを長期契約で継続的に担当。</span>
+        </li>
+        <li>
+          <span class="svc-title">開発チームの推進・アジャイル開発支援</span>
+          <span class="svc-desc">エンジニアリングチームとの連携、スプリント計画、開発プロセスの改善支援。</span>
+        </li>
+        <li>
+          <span class="svc-title">ステークホルダー調整・市場調査</span>
+          <span class="svc-desc">営業・カスタマーサポート・パートナー各部門との調整、顧客フィードバックの収集と分析。</span>
+        </li>
+      </ul>
+    </div>
+    <div data-lang="en">
+      <p class="eyebrow">Services</p>
+      <h2>Services</h2>
+      <ul class="services">
+        <li>
+          <span class="svc-title">Product strategy &amp; roadmap</span>
+          <span class="svc-desc">Product strategy grounded in market trends and customer needs; roadmap definition and upkeep; feature prioritization.</span>
+        </li>
+        <li>
+          <span class="svc-title">Contracted product management</span>
+          <span class="svc-desc">Serving as head of product under a consulting engagement, owning the product from planning through delivery on a long-term contract.</span>
+        </li>
+        <li>
+          <span class="svc-title">Engineering delivery &amp; agile support</span>
+          <span class="svc-desc">Working day-to-day with engineering teams: sprint planning, delivery coordination, and process improvement.</span>
+        </li>
+        <li>
+          <span class="svc-title">Stakeholder coordination &amp; research</span>
+          <span class="svc-desc">Aligning sales, support, and partner teams; gathering and analyzing customer feedback.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="profile">
+    <div data-lang="ja">
+      <p class="eyebrow">Profile</p>
+      <h2>プロフィール</h2>
+      <p>ソフトウェアプロダクトマネジメントを専門とするコンサルタント。2010年にスウェーデンから日本へ移住し、2013年の開業以来、日本を拠点に海外のソフトウェア企業を支援しています。</p>
+      <p>専門領域は、データベースおよびインフラストラクチャ・ソフトウェア分野におけるプロダクト戦略、ロードマップ策定、機能の優先順位付け。プロダクト部門責任者（VP of Products）としての実務経験を持ち、エンジニアリングチームのマネジメント、スプリント計画の運営、営業・サポート・パートナー部門との調整まで、プロダクト運営の全体を担ってきました。</p>
+    </div>
+    <div data-lang="en">
+      <p class="eyebrow">Profile</p>
+      <h2>Profile</h2>
+      <p>A consultant specializing in software product management. I relocated from Sweden to Japan in 2010, and have run this practice from Japan since the business was registered in 2013, serving software companies overseas.</p>
+      <p>My expertise covers product strategy, roadmap planning, and feature prioritization in the database and infrastructure software space, backed by hands-on leadership experience as a VP of Products: managing engineering teams, running sprint planning, and coordinating across sales, support, and partner organizations.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div data-lang="ja">
+      <p class="eyebrow">Contact</p>
+      <h2>お問い合わせ</h2>
+      <p class="contact-line">ご連絡は <a href="mailto:alex@acrocity.io">alex@acrocity.io</a> までお願いいたします。</p>
+    </div>
+    <div data-lang="en">
+      <p class="eyebrow">Contact</p>
+      <h2>Contact</h2>
+      <p class="contact-line">Please direct inquiries to <a href="mailto:alex@acrocity.io">alex@acrocity.io</a>.</p>
+    </div>
+  </section>
+
+  <footer class="site">
+    <span data-lang="ja">© 2013-2026 Alexander Yu（個人事業）</span>
+    <span data-lang="en">© 2013-2026 Alexander Yu (Sole Proprietorship)</span>
+    <span data-lang="ja">日本</span>
+    <span data-lang="en">Japan</span>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btnJa = document.getElementById('btn-ja');
+    var btnEn = document.getElementById('btn-en');
+    function setLang(lang) {
+      if (lang === 'en') {
+        root.setAttribute('data-page-lang', 'en');
+      } else {
+        root.removeAttribute('data-page-lang');
+      }
+      btnJa.setAttribute('aria-pressed', String(lang === 'ja'));
+      btnEn.setAttribute('aria-pressed', String(lang === 'en'));
+    }
+    btnJa.addEventListener('click', function () { setLang('ja'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+  })();
+</script>
